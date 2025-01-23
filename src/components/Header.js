@@ -1,18 +1,32 @@
 import React from 'react';
-import eatnowlogo from '../assets/logoe.png';  
-import { FaShoppingCart } from 'react-icons/fa';  
+import eatnowlogo from '../assets/logoe.png';
+import { FaShoppingCart } from 'react-icons/fa';
 
-const Header = () => {
+const Header = ({ setSearchQuery }) => {
   return (
     <div style={styles.headerContainer}>
       <div style={styles.logoContainer}>
         <img src={eatnowlogo} alt="Logo" style={styles.logo} />
       </div>
+      <div style={styles.searchContainer}>
+      <input
+        type="text"
+        placeholder="Search for meals or restaurants..."
+        style={styles.searchInput}
+        onChange={(e) => setSearchQuery(e.target.value)}  // Update search query
+      />
+    </div>
       <nav style={styles.nav}>
         <ul style={styles.navList}>
-          <li style={styles.navItem}><a href="/" style={styles.navLink}>Home</a></li>
-          <li style={styles.navItem}><a href="/about" style={styles.navLink}>Delivery</a></li>
-          <li style={styles.navItem}><a href="/services" style={styles.navLink}>Dine in</a></li>
+          <li style={styles.navItem}>
+            <a href="/" style={styles.navLink}>Home</a>
+          </li>
+          <li style={styles.navItem}>
+            <a href="/about" style={styles.navLink}>About</a>
+          </li>
+          <li style={styles.navItem}>
+            <a href="/contact" style={styles.navLink}>Contact</a>
+          </li>
           <li style={styles.navItem}>
             <a href="/cart" style={styles.navLink}>
               <FaShoppingCart style={styles.cartIcon} /> Cart
@@ -37,7 +51,21 @@ const styles = {
     flex: 1,
   },
   logo: {
-    height: '60px', 
+    height: '60px',
+  },
+  searchContainer: {
+    flex: 2,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  searchInput: {
+    width: '80%',
+    padding: '8px 10px',
+    border: '1px solid #ccc',
+    borderRadius: '20px',
+    outline: 'none',
+    fontSize: '14px',
   },
   nav: {
     flex: 2,
@@ -61,8 +89,8 @@ const styles = {
     alignItems: 'center',
   },
   cartIcon: {
-    marginRight: '5px',  
-    fontSize: '18px',    
+    marginRight: '5px',
+    fontSize: '18px',
   },
 };
 
